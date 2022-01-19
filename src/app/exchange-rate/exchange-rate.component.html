@@ -1,6 +1,32 @@
-<p>{{ exchangeRate.result }}</p>
-<p>{{ exchangeRate.time_last_update_utc }}</p>
-<p>USD : {{ exchangeRate.conversion_rates.USD }}</p>
-<ul *ngFor="let cr of exchangeRate.conversion_rates | keyvalue">
-  <li>{{ cr.key }}: {{ cr.value }}</li>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <p>{{ exchangeRate.result }}</p>
+      <p>Last Update: {{ exchangeRate.time_last_update_utc }}</p>
+
+      <table class="table table-success table-striped">
+        <thead>
+          <tr>
+            USD :
+            {{
+              exchangeRate.conversion_rates.USD
+            }}
+          </tr>
+          <tr>
+            <th>Currency</th>
+            <th>Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="table-active"
+            *ngFor="let cr of exchangeRate.conversion_rates | keyvalue"
+          >
+            <td>{{ cr.key }}</td>
+            <td>{{ cr.value }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
