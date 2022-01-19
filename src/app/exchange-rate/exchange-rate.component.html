@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <p>{{ exchangeRate.result }}</p>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <h3>USD Exchange Rate</h3>
+      <!-- <p>{{ exchangeRate.result }}</p> -->
       <p>Last Update: {{ exchangeRate.time_last_update_utc }}</p>
 
       <table class="table table-success table-striped">
@@ -20,10 +21,12 @@
         <tbody>
           <tr
             class="table-active"
-            *ngFor="let cr of exchangeRate.conversion_rates | keyvalue"
+            *ngFor="
+              let conversionRate of exchangeRate.conversion_rates | keyvalue
+            "
           >
-            <td>{{ cr.key }}</td>
-            <td>{{ cr.value }}</td>
+            <td>{{ conversionRate.key }}</td>
+            <td>{{ conversionRate.value }}</td>
           </tr>
         </tbody>
       </table>
